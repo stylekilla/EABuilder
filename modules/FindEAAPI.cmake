@@ -25,6 +25,12 @@ find_library(EAAPI_LIBRARY NAMES EAAPI_x64_Release.lib HINTS C:/EAAPI/lib/x64_Re
 find_library(EAAPI_DEBUG_LIBRARY NAMES EAAPI_x64_Debug.lib HINTS C:/EAAPI/lib/x64_Debug)
 set(EAAPI_LIBRARIES optimized ${EAAPI_LIBRARY} Rpcrt4.lib
                     debug     ${EAAPI_DEBUG_LIBRARY} Rpcrt4.lib)
+					
+# Find the VAAPI libraries, both Debug and Release
+find_library(VAAPI_LIBRARY NAMES VAAPI.lib HINTS C:/EAAPI/lib/x64_Release)
+find_library(VAAPI_DEBUG_LIBRARY NAMES VAAPI.lib HINTS C:/EAAPI/lib/x64_Debug)
+set(VAAPI_LIBRARIES optimized ${VAAPI_LIBRARY} Rpcrt4.lib
+                    debug     ${VAAPI_DEBUG_LIBRARY} Rpcrt4.lib)
 
 # Find the EAAPI binaries, both Debug and Release
 find_library(EAAPI_BINARY NAMES VCServant.dll HINTS C:/EAAPI/bin/x64_Release)

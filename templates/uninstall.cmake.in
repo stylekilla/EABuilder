@@ -32,7 +32,9 @@ set(COPY_MATERIAL_TABLE @COPY_MATERIAL_TABLE@)
 # Delete the physical material table files.
 if (${COPY_MATERIAL_TABLE} MATCHES "ON")
     foreach(MATERIAL_TABLE "@INSTALLED_MATERIAL_TABLES@")
-        file(REMOVE ${MATERIAL_TABLE})
+        if (NOT MATERIAL_TABLE STREQUAL "")
+            file(REMOVE ${MATERIAL_TABLE})
+        endif()
     endforeach(MATERIAL_TABLE)
 endif()
 
