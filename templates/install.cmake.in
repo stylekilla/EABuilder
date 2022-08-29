@@ -15,15 +15,15 @@
 set(CMAKE_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@")
 set(CMAKE_SOURCE_DIR "@CMAKE_SOURCE_DIR@")
 set(CMAKE_CURRENT_BINARY_DIR "@CMAKE_CURRENT_BINARY_DIR@")
-
+# Servant details.
 set(SERVANT "@SERVANT@")
 set(SERVANT_EXE_NAME "@SERVANT_EXE_NAME@")
 set(VERSION "@VERSION@")
-
+# Eclipse backend locations.
 set(DCF_DIRECTORY "@DCF_DIRECTORY@")
 set(EAAPI_BINARIES "@EAAPI_BINARIES@")
 set(OPTIONS_DIRECTORY "@OPTIONS_DIRECTORY@")
-
+# Algorithm options.
 set(REGISTER_SERVANT @REGISTER_SERVANT@)
 set(REGISTER_ALGORITHM @REGISTER_ALGORITHM@)
 set(COPY_CALCULATION_OPTIONS @COPY_CALCULATION_OPTIONS@)
@@ -31,17 +31,17 @@ set(FORCE_AGENT_RELOAD @FORCE_AGENT_RELOAD@)
 set(COPY_MATERIAL_TABLE @COPY_MATERIAL_TABLE@)
 
 # Install the EAAPI user algorithm.
+# Copy the Servant.exe executable.
 file(COPY "${CMAKE_CURRENT_BINARY_DIR}/Release/${SERVANT_EXE_NAME}.exe" DESTINATION "${CMAKE_INSTALL_PREFIX}")
-
+# Copy EAAPI vinaries (VCServant.dll).
 set(INSTALLED_EAAPI_BINARIES "")
 foreach (BIN ${EAAPI_BINARIES})
     file(COPY ${BIN} DESTINATION "${CMAKE_INSTALL_PREFIX}")
-
     get_filename_component(INSTALLED_EAAPI_BINARY ${BIN} NAME)
     set(INSTALLED_EAAPI_BINARIES ${INSTALLED_EAAPI_BINARIES} "${CMAKE_INSTALL_PREFIX}/${INSTALLED_EAAPI_BINARY}")
 endforeach(BIN)
 
-# Generate the configuration information for the servant.
+# Generate the configuration information for the servant (ServantInfo.xml).
 execute_process(COMMAND "${CMAKE_INSTALL_PREFIX}/${SERVANT_EXE_NAME}.exe" "generate-configuration-info"
                 WORKING_DIRECTORY "${CMAKE_INSTALL_PREFIX}")
 
