@@ -6,9 +6,6 @@
 #
 # --- Build Setup and Options ---
 
-# Hybrid setup.
-set(SERVANT "Hybrid" CACHE STRING "Hybrid Client")
-set(VERSION "1.0.0" CACHE STRING "The version of the algorithm")
 set(DCF_DIRECTORY "C:/VMSOS/DCF" CACHE PATH "The path to the Distributed Calculation Framework installation")
 set(OPTIONS_DIRECTORY "C:/VMSOS/DCF/client/Options ([API])" CACHE PATH "The path to the Distributed Calculation Framework options directory")
 
@@ -46,5 +43,4 @@ project(${SERVANT})
 # Find the Eclipse Algorithm API includes and libraries.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/EABuilder/modules")
 
-find_package(EAAPI REQUIRED)
-include_directories(${EAAPI_INCLUDE_DIRS})
+find_package(EAAPI REQUIRED) # EAAPI_INCLUDE_DIRS, EAAPI_LIBRARIES, VAAPI_LIBRARIES, EAAPI_BINARIES
